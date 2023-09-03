@@ -46,6 +46,9 @@ gem "figaro"
 
 group :development, :test do
   gem "pry"
+  gem "faker"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
 end
 
 group :test do
@@ -53,6 +56,9 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "simplecov"
+  gem "vcr"
+  gem "webmock"
+  gem "launchy"
 end
 
 group :development do

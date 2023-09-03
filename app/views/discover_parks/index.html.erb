@@ -1,0 +1,28 @@
+<h1>Discover State Parks</h1>
+
+<%= form_with url: user_discover_parks_path(@user.id), method: :get do |form| %>
+  <div id="state_finder">
+    <%= form.label :select_state, "Select a State:"%>
+    <%= form.select :select_state, us_states, { prompt: "Select a state" } %>
+    <%= form.submit "Find Parks"%>
+  </div>
+<% end %>
+
+<div id="parks">
+  <% if @selected_state %>
+  <h2><%= @state %></h2>
+    <% @parks.each do |park| %>
+      <h2><%= park.name %></h2>
+      <p>Description: <%= park.description%></p>
+      <p>Direction Info: <%= park.directions_info%></p>
+      <% park.standard_hours.each do |park_name, hours| %>
+        <ul>
+          <h4><%= park_name if park_name != park.name %></h4>
+          <% hours.each do |day, hours_range| %>
+            <li><%= day %>: <%= hours_range %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
